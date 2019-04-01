@@ -1,0 +1,27 @@
+<head>
+  <link href="./resources/css/index.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+  <p>Getting started with Firebase</p>
+  <h1 id="bigOne"></h1>
+  
+  <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+    apiKey: "AIzaSyAYdRH4StQ_TJKfYEC8OBi7Q2E6y6evuRw",
+    authDomain: "fir-test-d0bb2.firebaseapp.com",
+    databaseURL: "https://fir-test-d0bb2.firebaseio.com",
+    projectId: "fir-test-d0bb2",
+    storageBucket: "fir-test-d0bb2.appspot.com",
+    messagingSenderId: "954948487101"
+    };
+    firebase.initializeApp(config);
+    
+    <!-- get a value from db -->
+    var bigOne = document.getElementById('bigOne');
+    var dbRef = firebase.database().ref().child('text');
+    dbRef.on('value', snap => bigOne.innerText = snap.val());
+  </script>
+</body>
